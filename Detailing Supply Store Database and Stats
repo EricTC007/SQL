@@ -1,0 +1,22 @@
+CREATING A detailing supply store database
+
+CREATE TABLE detailingsupplies (id TEXT PRIMARY KEY, name TEXT, cleaningpurpose TEXT, quantity INTEGER, price INTEGER);
+
+INSERT INTO detailingsupplies VALUES
+(1, "Chemical Guys", "Tire Shine", 2, 15),
+(2, "Meguires", "Soap and Wax", 5, 20),
+(3, "Adams", "Bug and Tar Remover", 3, 10),
+(4, "MAD", "Ceramic Coating", 5, 30);
+
+--Display all information from store.
+SELECT * FROM detailingsupplies;
+
+--Display all items from supply store and ordering by price.
+SELECT * FROM detailingsupplies ORDER BY price;
+
+--Display the total number of items in the store.
+SELECT SUM(quantity) FROM detailingsupplies;
+
+--Display two rows of information from table, grouping them by name, and ordering them by price.
+SELECT cleaningpurpose, SUM(price) FROM detailingsupplies GROUP BY name ORDER BY price;
+
