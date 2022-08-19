@@ -1,0 +1,98 @@
+First data set indicates actors names and how many years they portrayed James Bond and orders by years played from least to greatest.
+Second data set indicates actors name and how many James Bond films Sean Connery took place in.
+Third data set indicates all actors names who portrayed James Bond, how many films they took place in and how many years total each played the role.
+Fourth data set indicates actors names, all Bond films, and and their release year in descending order.
+Fifth data set indicates actors names, the film they took place in, the release year, and orders those films in descending order with a gross of more than $850,000.
+
+
+Displays CREATE TABLE Bond_Actors ( id INTEGER PRIMARY KEY, person_id INTEGER, name TEXT, occupation TEXT, alias TEXT);
+
+INSERT INTO Bond_Actors (person_id, name, occupation, alias) VALUES 
+("1", "Sean Connery", "Actor", "James Bond");
+INSERT INTO Bond_Actors (person_id, name, occupation, alias) VALUES ("2", "George Lazenby", "Actor", "James Bond");
+INSERT INTO Bond_Actors (person_id, name, occupation, alias) VALUES
+("3", "Roger Moore", "Actor", "James Bond");
+INSERT INTO Bond_Actors (person_id, name, occupation, alias) VALUES
+("4", "Timothy Dalton", "Actor", "James Bond");
+INSERT INTO Bond_Actors (person_id, name, occupation, alias) VALUES
+("5", "Pierce Brosnan", "Actor", "James Bond");
+INSERT INTO Bond_Actors (person_id, name, occupation, alias) VALUES
+("6", "Daniel Craig", "Actor", "James Bond");
+
+CREATE TABLE Tenure (id INTEGER PRIMARY KEY, person_id INTEGER, name TEXT, bond_films INTEGER, years_played INTEGER);
+
+INSERT INTO Tenure (person_id, name, bond_films, years_played) VALUES
+("1", "Sean Connery", "7", "7");
+INSERT INTO Tenure (person_id, name, bond_films, years_played) VALUES
+("2", "George Lazenby", "1", "1");
+INSERT INTO Tenure (person_id, name, bond_films, years_played) VALUES
+("3", "Roger Moore", "7", "12");
+INSERT INTO Tenure (person_id, name, bond_films, years_played) VALUES
+("4", "Timothy Dalton", "2", "2");
+INSERT INTO Tenure (person_id, name, bond_films, years_played) VALUES
+("5", "Pierce Brosnan", "4", "7");
+INSERT INTO Tenure (person_id, name, bond_films, years_played) VALUES
+("6", "Daniel Craig", "5", "15");
+
+CREATE TABLE Films (id INTEGER PRIMARY KEY, person_id INTEGER, film_name TEXT, release_year INTEGER, gross INTEGER, actor TEXT);
+
+INSERT INTO Films (person_id,film_name, release_year, gross, actor) VALUES
+("1", "Dr.No", "1962", "497027", "Sean Connery");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("1", "From Russia With Love", "1963", "649736", "Sean Connery");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("1", "Goldfinger", "1964", "1015271", "Sean Connery");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("1", "Thunderball", "1965", "1129550", "Sean Connery");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("1", "You Only Live Twice", "1967", "841975", "Sean Connery");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("2", "On Her Majesty's Secret Service", "1969", "563027", "George Lazenby");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("1", "Diamonds are Forever", "1971", "721746", "Sean Connery");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "Live and Let Die", "1973", "918284", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "The Man with the Golden Gun", "1974", "498866", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "The Spy Who Loved Me", "1977", "770936", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "Moonraker", "1979", "729935", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "For Your Eyes Only", "1981", "541402", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "Octopussy", "1983", "474376", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("3", "A View to a Kill", "1985", "357440", "Roger Moore");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("4", "The Living Daylights", "1987", "424122", "Timothy Dalton");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("4", "License to Kill", "1989", "317357", "Timothy Dalton");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("5", "Goldeneye", "1995", "589346", "Pierce Brosnan");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("5", "Tomorrow Never Dies", "1997", "533030", "Pierce Brosnan");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("5", "The World is not Enough", "1999", "547131", "Pierce Brosnan");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("5", "Die Another Day", "2002", "605028", "Pierce Brosnan");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("6", "Casino Royale", "2006", "742992", "Daniel Craig");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("6", "Quantum of Solace", "2008", "692511", "Daniel Craig");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("6", "Skyfall", "2012", "1218849", "Daniel Craig");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("6", "Spectre", "2015", "935185", "Daniel Craig");
+INSERT INTO Films (person_id, film_name, release_year, gross, actor) VALUES
+("6", "No Time to Die", "2021", "760839", "Daniel Craig");
+
+SELECT Bond_Actors.name, Tenure.years_played FROM Bond_Actors LEFT OUTER JOIN Tenure ON Bond_Actors.id = Tenure.person_id ORDER BY years_played;
+
+SELECT Bond_Actors.name, Tenure.bond_films FROM Bond_Actors JOIN Tenure ON Bond_Actors.id = Tenure.person_id WHERE Bond_Actors.name = "Sean Connery";
+
+SELECT Bond_Actors.name, Tenure.bond_films, years_played FROM Bond_Actors JOIN Tenure ON Bond_Actors.id = Tenure.person_id;
+
+SELECT Bond_Actors.name, Films.film_name, release_year FROM Bond_Actors JOIN Films ON Bond_Actors.id = Films.person_id ORDER BY release_year ASC;
+
+SELECT Bond_Actors.name, Films.film_name, release_year, gross FROM Bond_Actors JOIN Films ON Bond_Actors.id = Films.person_id WHERE gross >= 850000  ORDER BY gross DESC;
